@@ -42,7 +42,7 @@ for (var i = 0; i < numeroDeBotones; i++) {
     var letraBoton = this.innerHTML;
     //Ahora uso la letra en un switch
     //para reflejar los 7 casos posibles
-
+    animarBoton(letraBoton);
     switch (letraBoton) {
       case "w":
         var tom1 = new Audio("sonidos/tom-1.mp3");
@@ -72,7 +72,53 @@ for (var i = 0; i < numeroDeBotones; i++) {
         var tom7 = new Audio("sonidos/kick-bass.mp3");
         tom7.play();
         break;
-    }
+    } //fin del switch
 
-  });
+  }); //Fin de la función
+} //Fin del for
+
+//Ahora voy a intentar detectar
+//que presionan una tecla
+document.addEventListener("keypress",function (event){
+  animarBoton(event.key);
+  switch (event.key) {
+    case "w":
+      var tom1 = new Audio("sonidos/tom-1.mp3");
+      tom1.play();
+      break;
+    case "a":
+      var tom2 = new Audio("sonidos/tom-2.mp3");
+      tom2.play();
+      break;
+    case "s":
+      var tom3 = new Audio("sonidos/tom-3.mp3");
+      tom3.play();
+      break;
+    case "d":
+      var tom4 = new Audio("sonidos/tom-4.mp3");
+      tom4.play();
+      break;
+    case "j":
+      var tom5 = new Audio("sonidos/snare.mp3");
+      tom5.play();
+      break;
+    case "k":
+      var tom6 = new Audio("sonidos/crash.mp3");
+      tom6.play();
+      break;
+    case "l":
+      var tom7 = new Audio("sonidos/kick-bass.mp3");
+      tom7.play();
+      break;
+  } //fin del switch
+}); //fin de la función
+
+//Ahora voy a crear una función para animar los botones
+function animarBoton(letra){
+  var botonActivo= document.querySelector("."+letra);
+  botonActivo.classList.add("presionado");
+
+  setTimeout(function(){
+    botonActivo.classList.remove("presionado");
+  },500);
 }
